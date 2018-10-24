@@ -39,7 +39,6 @@ if [ ! -d "$PRETRAINED_CHECKPOINT_DIR" ]; then
 fi
 if [ ! -f ${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt ]; then
   mv ${DATASET_DIR}/inception_v3.ckpt ${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt
-  rm ${DATASET_DIR}/inception_v3.ckpt
 fi
 
 # Fine-tune only the new layers for 1000 steps.
