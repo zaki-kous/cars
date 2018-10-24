@@ -24,15 +24,23 @@
 # ./slim/scripts/finetune_inception_v3_on_flowers.sh
 set -e
 
-# Where the pre-trained InceptionV3 checkpoint is saved to.
-PRETRAINED_CHECKPOINT_DIR=/Users/meitu/Desktop/car_object_dection/checkpoints
-
 # Where the training (fine-tuned) checkpoint and logs will be saved to.
-TRAIN_DIR=/Users/meitu/Desktop/car_object_dection/
+TRAIN_DIR=/output
+
+# Where the pre-trained InceptionV3 checkpoint is saved to.
+PRETRAINED_CHECKPOINT_DIR={TRAIN_DIR}/checkpoint
 
 # Where the dataset is saved to.
-DATASET_DIR=/Users/meitu/Desktop/car_object_dection/datasets
+DATASET_DIR=/data/z-top/cars # 数据集目录，这里是写死的，记得修改
 
+# move checkpoint.
+if [ ! -d "$PRETRAINED_CHECKPOINT_DIR" ]; then
+  mkdir ${PRETRAINED_CHECKPOINT_DIR}
+fi
+if [ ! -f ${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt ]; then
+  mv ${DATASET_DIR}/inception_v3.ckpt ${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt
+  rm ${DATASET_DIR}/inception_v3.ckpt
+fi
 
 # Fine-tune only the new layers for 1000 steps.
 python train_image_classifier.py \
@@ -45,7 +53,7 @@ python train_image_classifier.py \
   --checkpoint_path=${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=1000 \
+  --max_number_of_steps=100000 \
   --batch_size=32 \
   --learning_rate=0.01 \
   --learning_rate_decay_type=fixed \
