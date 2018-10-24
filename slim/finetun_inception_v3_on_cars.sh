@@ -43,7 +43,6 @@ fi
 
 # Fine-tune only the new layers for 1000 steps.
 python train_image_classifier.py \
-  --clone_on_cpu=True \
   --train_dir=${TRAIN_DIR} \
   --dataset_name=cars \
   --dataset_split_name=train \
@@ -64,7 +63,6 @@ python train_image_classifier.py \
 
 # Run evaluation.
 python eval_image_classifier.py \
-  --clone_on_cpu=True \
   --checkpoint_path=${TRAIN_DIR} \
   --eval_dir=${TRAIN_DIR} \
   --dataset_name=flowers \
