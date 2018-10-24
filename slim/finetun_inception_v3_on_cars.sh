@@ -28,7 +28,7 @@ set -e
 TRAIN_DIR=/output
 
 # Where the pre-trained InceptionV3 checkpoint is saved to.
-PRETRAINED_CHECKPOINT_DIR={TRAIN_DIR}/checkpoint
+PRETRAINED_CHECKPOINT_DIR=/output/checkpoint
 
 # Where the dataset is saved to.
 DATASET_DIR=/data/z-top/cars # 数据集目录，这里是写死的，记得修改
