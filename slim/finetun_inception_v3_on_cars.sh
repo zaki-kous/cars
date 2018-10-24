@@ -28,18 +28,10 @@ set -e
 TRAIN_DIR=/output
 
 # Where the pre-trained InceptionV3 checkpoint is saved to.
-PRETRAINED_CHECKPOINT_DIR=/output/checkpoint
+PRETRAINED_CHECKPOINT_DIR=/data/z-top/cars
 
 # Where the dataset is saved to.
 DATASET_DIR=/data/z-top/cars # 数据集目录，这里是写死的，记得修改
-
-# move checkpoint.
-if [ ! -d "$PRETRAINED_CHECKPOINT_DIR" ]; then
-  mkdir ${PRETRAINED_CHECKPOINT_DIR}
-fi
-if [ ! -f ${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt ]; then
-  mv ${DATASET_DIR}/inception_v3.ckpt ${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt
-fi
 
 # Fine-tune only the new layers for 1000 steps.
 python train_image_classifier.py \
