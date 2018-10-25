@@ -43,7 +43,7 @@ python train_image_classifier.py \
   --checkpoint_path=${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt \
   --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --max_number_of_steps=100000 \
+  --max_number_of_steps=240000 \
   --batch_size=32 \
   --learning_rate=0.01 \
   --learning_rate_decay_type=fixed \
@@ -58,6 +58,6 @@ python eval_image_classifier.py \
   --checkpoint_path=${TRAIN_DIR} \
   --eval_dir=${TRAIN_DIR} \
   --dataset_name=cars \
-  --dataset_split_name=validation \
+  --dataset_split_name=eval \
   --dataset_dir=${DATASET_DIR} \
   --model_name=inception_v3
