@@ -40,9 +40,6 @@ python train_image_classifier.py \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
   --model_name=inception_v3 \
-  --checkpoint_path=${PRETRAINED_CHECKPOINT_DIR}/inception_v3.ckpt \
-  --checkpoint_exclude_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
-  --trainable_scopes=InceptionV3/Logits,InceptionV3/AuxLogits \
   --max_number_of_steps=45000 \
   --batch_size=32 \
   --learning_rate=0.01 \
