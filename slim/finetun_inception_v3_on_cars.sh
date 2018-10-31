@@ -40,7 +40,7 @@ python train_image_classifier.py \
   --dataset_split_name=train \
   --dataset_dir=${DATASET_DIR} \
   --model_name=inception_v3 \
-  --max_number_of_steps=100000 \
+  --max_number_of_steps=55000 \
   --batch_size=32 \
   --learning_rate=0.01 \
   --learning_rate_decay_type=fixed \
